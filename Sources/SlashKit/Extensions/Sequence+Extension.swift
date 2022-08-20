@@ -14,8 +14,8 @@ extension Sequence {
         }
     }
     
-    public func sorted<Value: Comparable>(sortedBy keyPath: KeyPath<Element, Value>) -> [Element] {
-        self.sorted(by: keyPath, using: <)
+    public func sorted<Value: Comparable>(sortedBy keyPath: KeyPath<Element, Value>, direction: SortDirection = .asc) -> [Element] {
+        self.sorted(by: keyPath, using: direction.comparator())
     }
     
     public func sorted(by sortDescriptor: NSSortDescriptor) -> [Element] {
@@ -27,5 +27,20 @@ extension Sequence where Iterator.Element: Hashable {
     public func unique() -> [Iterator.Element] {
         var seen: Set<Iterator.Element> = []
         return filter { seen.insert($0).inserted }
+    }
+}
+
+public enum SortDirection {
+    case asc, desc
+}
+
+extension SortDirection {
+    public func comparator<T: Comparable>() -> (T,T) -> Bool {
+        switch self {
+        case .asc:
+            return (<)
+        case .desc:
+            return (>)
+        }
     }
 }
