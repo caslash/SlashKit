@@ -30,7 +30,7 @@ extension Sequence where Iterator.Element: Hashable {
     }
 }
 
-public enum SortDirection {
+public enum SortDirection: CaseIterable {
     case asc, desc
 }
 
