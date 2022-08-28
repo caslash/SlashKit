@@ -11,26 +11,20 @@ extension Calendar {
     private var currentDate: Date { Date() }
     
     public func isDateInNextYear(_ date: Date) -> Bool {
-        guard let nextYear = self.date(byAdding: DateComponents(year: 1), to: currentDate) else {
-            return false
-        }
+        guard let nextYear = self.date(byAdding: DateComponents(year: 1), to: currentDate) else { return false }
         
         return date < nextYear
     }
     
     public func isDateInNextMonth(_ date: Date) -> Bool {
-        guard let nextMonth = self.date(byAdding: DateComponents(month: 1), to: currentDate) else {
-            return false
-        }
+        guard let nextMonth = self.date(byAdding: DateComponents(month: 1), to: currentDate) else { return false }
         
         return date < nextMonth
     }
     
     public func isDateInLastDay(_ date: Date) -> Bool {
-        guard let lastDay = self.date(byAdding: DateComponents(day: -1), to: currentDate) else {
-            return false
-        }
+        guard let yesterday = self.date(byAdding: DateComponents(day: -1), to: currentDate) else { return false }
         
-        return date > lastDay
+        return (yesterday < date) && (date < currentDate)
     }
 }
