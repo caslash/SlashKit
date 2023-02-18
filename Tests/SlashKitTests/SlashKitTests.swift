@@ -2,13 +2,6 @@ import XCTest
 @testable import SlashKit
 
 final class SlashKitTests: XCTestCase {
-//    func testExample() throws {
-//        // This is an example of a functional test case.
-//        // Use XCTAssert and related functions to verify your tests produce the correct
-//        // results.
-//        XCTAssertEqual(SlashKit().text, "Hello, World!")
-//    }
-    
     #if canImport(UIKit)
     func testUIColorToHex() throws {
         let white = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -22,4 +15,23 @@ final class SlashKitTests: XCTestCase {
         XCTAssertEqual("#000000", black.toHexString())
     }
     #endif
+    
+    func testStringSubscript() throws {
+        let name = "Slash"
+        XCTAssertEqual("S", name[0])
+        XCTAssertEqual("l", name[1])
+        XCTAssertEqual("a", name[2])
+        XCTAssertEqual("s", name[3])
+        XCTAssertEqual("h", name[4])
+    }
+    
+    func testStringSubscriptIteration() throws {
+        let name = "Slash"
+        
+        for i in 0..<name.count {
+            let expected = name[i]
+            let actual = name[name.index(name.startIndex, offsetBy: i)]
+            XCTAssertEqual(expected, actual)
+        }
+    }
 }
