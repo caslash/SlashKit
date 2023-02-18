@@ -8,7 +8,7 @@
 import Foundation
 
 extension StringProtocol {
-    subscript(offset: Int) -> Character {
+    public subscript(offset: Int) -> Character {
         return self[index(startIndex, offsetBy: offset)]
     }
 }
