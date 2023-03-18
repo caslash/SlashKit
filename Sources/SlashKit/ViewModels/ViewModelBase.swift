@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ViewModelBase: ObservableObject {
-    init() { }
+open class ViewModelBase: ObservableObject {
+    public init() { }
     deinit { }
 }
