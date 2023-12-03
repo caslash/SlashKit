@@ -67,11 +67,11 @@ open class StateMachine<U: CustomStringConvertible, T: State<U>> {
         }
     }
     
-    internal func getDebugMode() -> Bool { return true }
+    open func getDebugMode() -> Bool { return true }
     
-    internal func printLog(message: String) { print(message) }
+    open func printLog(message: String) { print(message) }
     
-    internal func printTransition(message: String) { print(message) }
+    open func printTransition(message: String) { print(message) }
     
-    internal func printErr(message: String) { print(message) }
+    open func printErr(message: String) { print(message) }
 }
