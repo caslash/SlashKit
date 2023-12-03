@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class StateMachine<U: CustomStringConvertible, T: State<U>> {
+open class StateMachine<U: CustomStringConvertible, T: State<U>> {
     private final var name: String
     
     internal var currentState: T?
@@ -18,24 +18,24 @@ public class StateMachine<U: CustomStringConvertible, T: State<U>> {
         self.name = name
     }
     
-    public func getName() -> String{ return self.name }
+    open func getName() -> String{ return self.name }
     
-    public func initialize() { }
+    open func initialize() { }
     
-    public func validateStateTransition(currentState: T, nextState: String) -> Bool { return true }
+    open func validateStateTransition(currentState: T, nextState: String) -> Bool { return true }
     
-    public func addState(name: String, state: T) { states.updateValue(state, forKey: name) }
+    open func addState(name: String, state: T) { states.updateValue(state, forKey: name) }
     
-    public func getCurrentStateName() -> String {
+    open func getCurrentStateName() -> String {
         if let currentState { return currentState.description }
         return "nil"
     }
     
-    public func getCurrentState() -> T? { return currentState }
+    open func getCurrentState() -> T? { return currentState }
     
-    public func removeState(name: String) { states.removeValue(forKey: name) }
+    open func removeState(name: String) { states.removeValue(forKey: name) }
     
-    public func changeState(name: String) -> Bool {
+    open func changeState(name: String) -> Bool {
         if validateStateTransition(currentState: currentState!, nextState: name) {
             if currentState != nil && !currentState!.canAdvance(nextState: name) {
                 if getDebugMode() { self.printErr(message: "> Invalid state transition: <\(currentState?.description ?? "nil")> is not complete and cannot advance to <\(name)>") }
@@ -58,7 +58,7 @@ public class StateMachine<U: CustomStringConvertible, T: State<U>> {
         return false
     }
     
-    public func update(timeElapsed: Float) {
+    open func update(timeElapsed: Float) {
         if let currentState {
             currentState.updateState(timeElapsed: timeElapsed)
             if currentState.nextState() != nil {
