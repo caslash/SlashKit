@@ -8,11 +8,11 @@
 import Foundation
 
 open class StateMachine<U: CustomStringConvertible, T: State<U>> {
-    private final var name: String
+    internal final var name: String
     
-    internal var currentState: T?
+    open var currentState: T?
     
-    internal var states: [String: T] = [String: T]()
+    open var states: [String: T] = [String: T]()
     
     public init(name: String) {
         self.name = name

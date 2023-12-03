@@ -14,9 +14,9 @@ open class State<T: CustomStringConvertible>: CustomStringConvertible {
     
     open var nextStateString: String?
     
-    internal var data: Any?
+    open var data: Any?
     
-    private var type: T
+    open var type: T
     
     public init(type: T) {
         self.name = type.description
