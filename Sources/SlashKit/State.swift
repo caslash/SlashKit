@@ -30,7 +30,7 @@ open class State<T: CustomStringConvertible>: CustomStringConvertible {
     
     open func executeAction(action: Int, data: [Any]) -> Bool { return false }
     
-    open func initState(data: Any) { fatalError("initState(data:) has not been implemented") }
+    open func initState(data: Any?) { fatalError("initState(data:) has not been implemented") }
     
     open func updateState(timeElapsed: Float) { fatalError("updateState(timeElapsed:) has not been implemented") }
     

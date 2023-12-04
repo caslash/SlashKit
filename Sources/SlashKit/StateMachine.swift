@@ -46,7 +46,7 @@ open class StateMachine<U: CustomStringConvertible, T: State<U>> {
                     var data: Any? = nil
                     if let currentState { data = currentState.getData() }
                     currentState = states[name]
-                    currentState?.initState(data: data!)
+                    currentState?.initState(data: data)
                     return true
                 } else {
                     currentState = nil
