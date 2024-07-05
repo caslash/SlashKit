@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class StateMachine<U: CustomStringConvertible, T: State<U>> {
+open class StateMachine<U: CustomStringConvertible, T: MachineState<U>> {
     internal final var name: String
     
     open var currentState: T?

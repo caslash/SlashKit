@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class State<T: CustomStringConvertible>: CustomStringConvertible {
+open class MachineState<T: CustomStringConvertible>: CustomStringConvertible {
     open var description: String
     
     open var name: String
